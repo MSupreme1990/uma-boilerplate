@@ -1,0 +1,80 @@
+@function uma-color($name: default) {
+  @return map-get($uma-theme-colors, $name);
+}
+
+@function implode($pieces, $glue: "") {
+  $result: null;
+  @each $piece in $pieces {
+    @if type-of($piece) == list {
+      $result: unquote("#{$result}#{$glue}#{implode($piece, $glue)}");
+    } @else {
+      $result: unquote("#{$result}#{$glue}#{$piece}");
+    }
+  }
+  @if $result != null {
+    $result: str-slice($result, str-length($glue) + 1, -1);
+  }
+  @return $result;
+}
+
+// Return list-map from `$list` and ensure input list-map is list-of-lists
+@function map-convert($list) {
+  @if length($list) == 2 and length(nth($list, 1)) == 1 {
+    @return append((), $list, 'comma');
+  }
+
+  @return $list;
+}
+
+// Return previous key from list-map
+@function map-prev-key($list, $key) {
+  @if map-has-key($list, $key) {
+    $list: map-convert($list);
+    $keys: map-keys($list);
+    $index: index($keys, $key) - 1;
+
+    @return if($index <= 0, null, nth($keys, $index));
+  } @else {
+    @return null;
+  }
+}
+
+// Return next key from list-map
+@function map-next-key($list, $key) {
+  @if map-has-key($list, $key) {
+    $list: map-convert($list);
+    $keys: map-keys($list);
+    $index: index($keys, $key) + 1;
+
+    @return if($index > length($list), null, nth($keys, $index));
+  } @else {
+    @return null;
+  }
+}
+
+@mixin uma-breakpoint($breakpoint, $media: 'screen') {
+  @if map-has-key($uma-breakpoints, $breakpoint) {
+    @media #{$media} and (min-width: #{map-get($uma-breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "#{$breakpoint} is not a set breakpoint variable";
+  }
+}
+
+@function uma-get-breakpoint($breakpoint) {
+  @if (map-has-key($uma-breakpoints, $breakpoint)) {
+    @return map-get($uma-breakpoints, $breakpoint);
+  } @else {
+    @warn "#{$breakpoint} is not a set breakpoint variable";
+    @return null;
+  }
+}
+
+@function uma-media-map($map) {
+  $temp: ();
+  @each $prefix, $breakpoint in $map {
+    $temp: append($temp, '(' + $prefix + ': ' + $breakpoint + ')');
+  }
+  @return implode($temp, ' and ');
+}

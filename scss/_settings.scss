@@ -1,0 +1,33 @@
+$uma-font: 'Gotham Pro', 'Roboto', 'Socicon', sans-serif;
+$uma-theme-colors: (
+  default: #ef233c,
+  text_white: #fff,
+  gray: #c8c8c8,
+  darkgray: #757575,
+  black_meta: #444444,
+  black: #2e2e2e,
+  black_menu: #474747,
+  marker: #1e63ca
+);
+$uma-theme-sizes: (
+        xsmall: .67em,
+        small: .83em,
+        medium: 1em,
+        large: 1.17em,
+        xlarge: 1.5em,
+        xxlarge: 2em
+);
+$uma-breakpoints: (
+        small: 0,
+        medium: 768px,
+        large: 992px,
+        xlarge: 1200px,
+        xxlarge: 1600px
+);
+$uma-block-grid-count: 12;
+$uma-body-font-size: 16px;
+$uma-body-line-height: 1.5;
+$uma-body-text-color: #000;
+$uma-heading-text-color: $uma-body-text-color;
+$uma-heading-font: $uma-font;
+$uma-block-grid-padding: 1em;

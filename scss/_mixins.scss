@@ -1,0 +1,84 @@
+@mixin uma-block-grid-offset() {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0 ($uma-block-grid-padding/2) $uma-block-grid-padding;
+}
+
+@mixin uma-media($map, $media: 'screen') {
+  @media #{$media} and #{uma-media-map($map)} {
+    @content;
+  }
+}
+
+$uma-current-color: none !default;
+@mixin uma-colors($schema: $uma-theme-colors) {
+  @each $name, $color in $schema {
+    $uma-current-name: $name !global;
+    $uma-current-color: $color !global;
+    @if $name == default {
+      @content;
+    } @else {
+      &_#{$uma-current-name} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin ellipsis($no-wrap: true) {
+  @if $no-wrap {
+    white-space: nowrap;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin antialias($value: true) {
+  @if $value == true {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    text-rendering: auto;
+  }
+}
+
+@mixin uma-heading {
+  h1 {
+    @extend .b-heading;
+    font-size: map-get($uma-theme-sizes, xxlarge);
+    @content;
+  }
+
+  h2 {
+    @extend .b-heading;
+    font-size: map-get($uma-theme-sizes, xlarge);
+    @content;
+  }
+
+  h3 {
+    @extend .b-heading;
+    font-size: map-get($uma-theme-sizes, large);
+    @content;
+  }
+
+  h4 {
+    @extend .b-heading;
+    font-size: map-get($uma-theme-sizes, medium);
+    @content;
+  }
+
+  h5 {
+    @extend .b-heading;
+    font-size: map-get($uma-theme-sizes, small);
+    @content;
+  }
+
+  h6 {
+    @extend .b-heading;
+    font-size: map-get($uma-theme-sizes, xsmall);
+    @content;
+  }
+}

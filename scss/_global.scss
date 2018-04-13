@@ -1,0 +1,67 @@
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  color: $buza-body-text-color;
+  font-size: $buza-body-font-size;
+  font-family: $buza-font;
+  font-style: normal;
+  font-weight: normal;
+  line-height: $buza-body-line-height;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+p {
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: normal;
+  font-weight: bold;
+  color: $buza-heading-text-color;
+  font-family: $buza-heading-font;
+}
+
+@mixin buza-placeholder-reset {
+  font-size: $buza-body-font-size;
+  font-family: $buza-font;
+  font-style: normal;
+}
+
+::-webkit-input-placeholder {
+  @include buza-placeholder-reset;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  @include buza-placeholder-reset;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  @include buza-placeholder-reset;
+}
+
+:-ms-input-placeholder {
+  @include buza-placeholder-reset;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
