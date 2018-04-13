@@ -11,12 +11,12 @@ html {
 
 body {
   min-height: 100%;
-  color: $buza-body-text-color;
-  font-size: $buza-body-font-size;
-  font-family: $buza-font;
+  color: $uma-body-text-color;
+  font-size: $uma-body-font-size;
+  font-family: $uma-font;
   font-style: normal;
   font-weight: normal;
-  line-height: $buza-body-line-height;
+  line-height: $uma-body-line-height;
 }
 
 img {
@@ -35,30 +35,30 @@ p {
 h1, h2, h3, h4, h5, h6 {
   font-style: normal;
   font-weight: bold;
-  color: $buza-heading-text-color;
-  font-family: $buza-heading-font;
+  color: $uma-heading-text-color;
+  font-family: $uma-heading-font;
 }
 
-@mixin buza-placeholder-reset {
-  font-size: $buza-body-font-size;
-  font-family: $buza-font;
+@mixin uma-placeholder-reset {
+  font-size: $uma-body-font-size;
+  font-family: $uma-font;
   font-style: normal;
 }
 
 ::-webkit-input-placeholder {
-  @include buza-placeholder-reset;
+  @include uma-placeholder-reset;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  @include buza-placeholder-reset;
+  @include uma-placeholder-reset;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-  @include buza-placeholder-reset;
+  @include uma-placeholder-reset;
 }
 
 :-ms-input-placeholder {
-  @include buza-placeholder-reset;
+  @include uma-placeholder-reset;
 }
 
 a {
